@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<bean id="triangle" class="com.armedia.javabrains.Triangle">
+		<!-- <property name="type" value="Isosceles" /> --> <!-- For setter injection -->
+		<!-- <constructor-arg value="Isosceles" /> For constructor injection -->
+		<!-- <constructor-arg type="java.lang.String" value="20" /> -->
+
+		<constructor-arg index="0" value="Isosceles" />
+		<constructor-arg index="1" value="20" />
+		<property name="pointA" ref="zeroPoint" />
+		<property name="pointB" ref="point2" />
+		<property name="pointC" ref="point3" />
+	</bean>
+
+	<bean id="circle" class="com.armedia.javabrains.Circle">
+		<constructor-arg value="5" />
+		<property name="center" ref="zeroPoint" />
+	</bean>
+
+	<bean id="polygon" class="com.armedia.javabrains.Polygon">
+		<property name="points">
+			<list>
+				<ref bean="zeroPoint" />
+				<ref bean="point2" />
+				<ref bean="point3" />
+				<ref bean="point4" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="autoTriangle" class="com.armedia.javabrains.AutowiredTriangle" autowire="byName" />
+	<bean id="autoTriangleAware" class="com.armedia.javabrains.AutowiredTriangleAware" autowire="byName" />
+
+	<bean id="zeroPoint" class="com.armedia.javabrains.Point">
+		<property name="x" value="0" />
+		<property name="y" value="0" />
+	</bean>
+
+	<bean id="point2" class="com.armedia.javabrains.Point">
+		<property name="x" value="-20" />
+		<property name="y" value="0" />
+	</bean>
+
+	<bean id="point3" class="com.armedia.javabrains.Point">
+		<property name="x" value="0" />
+		<property name="y" value="20" />
+	</bean>
+	
+	<bean id="point4" class="com.armedia.javabrains.Point">
+		<property name="x" value="-20" />
+		<property name="y" value="20" />
+	</bean>
+	
+	<bean id="pointA" class="com.armedia.javabrains.Point">
+		<property name="x" value="-10" />
+		<property name="y" value="0" />
+	</bean>
+
+	<bean id="pointB" class="com.armedia.javabrains.Point">
+		<property name="x" value="0" />
+		<property name="y" value="10" />
+	</bean>
+	
+	<bean id="pointC" class="com.armedia.javabrains.Point">
+		<property name="x" value="-10" />
+		<property name="y" value="10" />
+	</bean>
+	
+	
+</beans>
